@@ -1,0 +1,30 @@
+﻿@model Ecommerce_Laptops.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OrderModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.laptop_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.laptop_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Order_ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

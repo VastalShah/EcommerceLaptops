@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Ecommerce_Laptops.Models.OrderModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table table-hover" style="border: 1px solid black">
+    <thead class="bg-warning" style="text-align:center;">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.laptop_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr style="text-align:center;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.laptop_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Order_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Order_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Order_ID">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

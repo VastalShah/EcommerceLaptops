@@ -4,14 +4,16 @@ using Ecommerce_Laptops;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ecommerce_Laptops.Migrations
 {
     [DbContext(typeof(MyAppDbContext))]
-    partial class MyAppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210415100324_Order Migration")]
+    partial class OrderMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +126,7 @@ namespace Ecommerce_Laptops.Migrations
 
             modelBuilder.Entity("Ecommerce_Laptops.Models.OrderModel", b =>
                 {
-                    b.Property<string>("Order_ID")
+                    b.Property<string>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
@@ -135,7 +137,7 @@ namespace Ecommerce_Laptops.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Order_ID");
+                    b.HasKey("ID");
 
                     b.ToTable("Orders");
                 });

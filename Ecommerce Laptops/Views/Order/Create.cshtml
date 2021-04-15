@@ -1,0 +1,72 @@
+﻿@model Ecommerce_Laptops.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Create";
+    OrderDetailsModel orderDetails = ViewData["details"] as OrderDetailsModel;
+}
+
+<h1>Create Your Order</h1>
+<hr />
+<h4 class="text-center"><u>Confirm Details</u></h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="@orderDetails.Product_ImageUrl" alt="@orderDetails.Product_name" style="width: 200px">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@orderDetails.Product_name</h5>
+                    <h4 class="card-text"><span class="badge badge-warning">Price: &#8377;@orderDetails.Product_Price</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for=@orderDetails.UserEmail class="control-label">Email</label>
+            <input asp-for=@orderDetails.UserEmail class="form-control" value=@orderDetails.UserEmail readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for=@orderDetails.UserName class="control-label">Name</label>
+            <input asp-for=@orderDetails.UserName class="form-control" value=@orderDetails.UserName readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for=@orderDetails.UserAddress class="control-label">Address</label>
+            <input asp-for=@orderDetails.UserAddress class="form-control" value=@orderDetails.UserAddress readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for=@orderDetails.UserPhoneNumber class="control-label">PhoneNumber</label>
+            <input asp-for=@orderDetails.UserPhoneNumber class="form-control" value=@orderDetails.UserPhoneNumber readonly />
+        </div>
+    </div>
+</div>
+
+
+<div class="row text-right">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="laptop_id" class="control-label"></label>
+                <input asp-for="laptop_id" class="form-control" value=@orderDetails.Product_id readonly />
+                <span asp-validation-for="laptop_id" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="user_id" class="control-label"></label>
+                <input asp-for="user_id" class="form-control" value=@orderDetails.User_id readonly />
+                <span asp-validation-for="user_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Proceed to Checkout" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

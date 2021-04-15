@@ -19,5 +19,7 @@ namespace Ecommerce_Laptops
         }
 
         public DbSet<LaptopModel> Laptops { get; set; }
+
+        public DbSet<OrderModel> Orders { get; set; }
     }
 }

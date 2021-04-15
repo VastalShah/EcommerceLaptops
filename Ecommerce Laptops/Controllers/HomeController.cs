@@ -1,5 +1,6 @@
 ﻿using Ecommerce_Laptops.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,11 +16,13 @@ namespace Ecommerce_Laptops.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly MyAppDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger, MyAppDbContext context)
+        public HomeController(ILogger<HomeController> logger, MyAppDbContext context, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -44,9 +47,16 @@ namespace Ecommerce_Laptops.Controllers
             return View(laptopModel);
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult Privacy()
+        public IActionResult Privacy(int id)
         {
+            /*var laptoptype = id.GetType().Name;
+            ViewBag.Id = laptoptype;
+            var userid = _userManager.GetUserId(HttpContext.User);
+            ViewBag.userid = userid.GetType().Name;
+            var laptop = _context.Laptops.FirstOrDefault(m => m.ID == id);
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.userName = user.Email;
+            ViewBag.laptopName = laptop.Name;*/
             return View();
         }
 

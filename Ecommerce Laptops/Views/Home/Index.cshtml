@@ -17,8 +17,10 @@
                 <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="card-img-top" alt="..." height="200" width="200">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                    <p class="card-text">&#8377;@Html.DisplayFor(modelItem => item.Price)</p>
-                    <a class="btn btn-primary" asp-action="ViewDetails" asp-route-id="@item.ID">View Details</a>
+                    <h4 class="card-text text-center"><span class="badge badge-warning">&#8377;@Html.DisplayFor(modelItem => item.Price)</span></h4>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-action="ViewDetails" asp-route-id="@item.ID">View Details</a>
+                    </div>
                 </div>
             </div>
         }
