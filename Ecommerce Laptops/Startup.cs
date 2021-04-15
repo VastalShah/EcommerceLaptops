@@ -1,3 +1,4 @@
+using DataLayer;
 using Ecommerce_Laptops.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

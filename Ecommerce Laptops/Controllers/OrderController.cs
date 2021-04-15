@@ -9,6 +9,7 @@ using Ecommerce_Laptops;
 using Ecommerce_Laptops.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using DataLayer;
 
 namespace Ecommerce_Laptops.Controllers
 {

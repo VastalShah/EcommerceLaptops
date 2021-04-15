@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ecommerce_Laptops
+namespace DataLayer
 {
     public class MyAppDbContext : IdentityDbContext<ApplicationUser>
     {

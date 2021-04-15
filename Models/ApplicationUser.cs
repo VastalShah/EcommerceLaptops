@@ -5,6 +5,6 @@ namespace Ecommerce_Laptops.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string Address { get; internal set; }
+        public string Address { get; set; }
     }
 }

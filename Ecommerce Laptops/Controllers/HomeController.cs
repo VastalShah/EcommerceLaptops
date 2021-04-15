@@ -1,4 +1,5 @@
-﻿using Ecommerce_Laptops.Models;
+﻿using DataLayer;
+using Ecommerce_Laptops.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

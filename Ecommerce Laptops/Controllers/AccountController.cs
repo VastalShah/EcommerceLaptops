@@ -42,8 +42,8 @@ namespace Ecommerce_Laptops.Controllers
                     Address = model.Address
                 };
                 var result = await _secutiryManager.CreateAsync(user, model.Password);
-                //var addRole = await _secutiryManager.AddToRoleAsync(user, "Admin");
-                if (result.Succeeded)
+                var addRole = await _secutiryManager.AddToRoleAsync(user, "Admin");
+                if (result.Succeeded && addRole.Succeeded)
                 {
                     await _loginManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
