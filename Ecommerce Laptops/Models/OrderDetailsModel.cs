@@ -8,6 +8,7 @@ namespace Ecommerce_Laptops.Models
     public class OrderDetailsModel
     {
         public int Product_id { get; set; }
+        public string Order_id { get; set; }
         public string User_id { get; set; }
         public string Product_name { get; set; }
         public string Product_ImageUrl { get; set; }

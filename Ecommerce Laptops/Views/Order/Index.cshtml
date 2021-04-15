@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    List<OrderDetailsModel> orderDetails = ViewData["detailsOfOrder"] as List<OrderDetailsModel>;
 }
 
 <h1>Index</h1>
@@ -13,30 +14,30 @@
                 @Html.DisplayNameFor(model => model.Order_ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.laptop_id)
+                Laptop Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.user_id)
+                Email
             </th>
-            <th></th>
+            <th>
+                Address
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in orderDetails) {
         <tr style="text-align:center;">
             <td>
-                @Html.DisplayFor(modelItem => item.Order_ID)
+                @item.Order_id
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.laptop_id)
+                @item.Product_name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.user_id)
+                @item.UserEmail
             </td>
             <td>
-                @*<a asp-action="Edit" asp-route-id="@item.Order_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Order_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Order_ID">Delete</a>*@
+                @item.UserAddress
             </td>
         </tr>
 }

@@ -30,6 +30,28 @@ namespace Ecommerce_Laptops.Controllers
             var userid = _userManager.GetUserId(HttpContext.User);
             List<OrderModel> orders = await _context.Orders.ToListAsync();
             orders = orders.Where(u => u.user_id == userid).ToList();
+
+            List<OrderDetailsModel> orderDetails = new List<OrderDetailsModel>();
+            foreach (var item in orders)
+            {
+                var laptop = _context.Laptops.FirstOrDefault(m => m.ID == item.laptop_id);
+                var user = await _userManager.GetUserAsync(User);
+                OrderDetailsModel orderDetail = new OrderDetailsModel
+                {
+                    Product_name = laptop.Name,
+                    Product_ImageUrl = laptop.ImageUrl,
+                    Product_Price = laptop.Price,
+                    User_id = userid,
+                    UserName = user.UserName,
+                    UserEmail = user.Email,
+                    UserPhoneNumber = user.PhoneNumber,
+                    UserAddress = user.Address,
+                    Order_id = item.Order_ID
+                };
+                orderDetails.Add(orderDetail);
+            }
+            ViewData["detailsOfOrder"] = orderDetails;
+
             return View(orders);
         }
 
