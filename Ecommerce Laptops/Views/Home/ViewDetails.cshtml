@@ -1,0 +1,53 @@
+﻿@model Ecommerce_Laptops.Models.LaptopModel
+
+@{
+    ViewData["Title"] = "ViewDetails";
+}
+
+<h1>ViewDetails</h1>
+
+<div>
+    <h4>Laptop Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Html.DisplayFor(model => model.ImageUrl)" class="rounded mx-auto" style="width: 300px;" alt="@Html.DisplayNameFor(model => model.Name)">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RamAndStorage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RamAndStorage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BatteryCapacity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BatteryCapacity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

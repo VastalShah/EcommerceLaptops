@@ -17,5 +17,7 @@ namespace Ecommerce_Laptops
         public MyAppDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<LaptopModel> Laptops { get; set; }
     }
 }

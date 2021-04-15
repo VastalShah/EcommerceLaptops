@@ -1,8 +1,27 @@
-﻿@{
+﻿@model IEnumerable<Ecommerce_Laptops.Models.LaptopModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+
+
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width: 300px">
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="card-img-top" alt="..." height="200" width="200">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text">&#8377;@Html.DisplayFor(modelItem => item.Price)</p>
+                    <a class="btn btn-primary" asp-action="ViewDetails" asp-route-id="@item.ID">View Details</a>
+                </div>
+            </div>
+        }
+    </div>
+
 </div>
