@@ -4,12 +4,6 @@
 }
 
 <h1>Login</h1>
-@if (ViewBag.Error != null)
-{
-    <script>
-        alert(@ViewBag.Error);
-    </script>
-}
 
 
 <div class="row">
@@ -26,6 +20,7 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            <span class="text-danger">@ViewBag.Incorrect</span>
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
             </div>
@@ -33,11 +28,7 @@
     </div>
 </div>
 
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
