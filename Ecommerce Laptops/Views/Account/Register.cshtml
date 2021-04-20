@@ -4,13 +4,6 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-@if(ViewBag.Error!=null)
-            {
-                <script>
-                    alert(@ViewBag.Error);
-                </script>
-            }
-
 
 <div class="row">
     <div class="col-md-4">
@@ -56,7 +49,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
