@@ -5,7 +5,9 @@
     List<OrderDetailsModel> orderDetails = ViewData["detailsOfOrder"] as List<OrderDetailsModel>;
 }
 
-<h1>Index</h1>
+<blockquote class="blockquote">
+    <h1 class="display-4 text-center"><u>My Orders</u></h1>
+</blockquote>
 
 <table class="table table-hover" style="border: 1px solid black">
     <thead class="bg-warning" style="text-align:center;">
@@ -21,6 +23,9 @@
             </th>
             <th>
                 Address
+            </th>
+            <th>
+
             </th>
         </tr>
     </thead>
@@ -38,6 +43,9 @@
             </td>
             <td>
                 @item.UserAddress
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Order_id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

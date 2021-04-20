@@ -66,6 +66,8 @@ namespace Ecommerce_Laptops.Controllers
 
             var orderModel = await _context.Orders
                 .FirstOrDefaultAsync(m => m.Order_ID == id);
+            var laptop = _context.Laptops.FirstOrDefault(l => l.ID == orderModel.laptop_id);
+            ViewData["laptop"] = laptop;
             if (orderModel == null)
             {
                 return NotFound();
@@ -113,6 +115,7 @@ namespace Ecommerce_Laptops.Controllers
         }
 
         // GET: Order/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -131,6 +134,7 @@ namespace Ecommerce_Laptops.Controllers
         // POST: Order/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("ID,laptop_id,user_id")] OrderModel orderModel)
@@ -173,6 +177,8 @@ namespace Ecommerce_Laptops.Controllers
 
             var orderModel = await _context.Orders
                 .FirstOrDefaultAsync(m => m.Order_ID == id);
+            var laptop = _context.Laptops.FirstOrDefault(l => l.ID == orderModel.laptop_id);
+            ViewData["laptop"] = laptop;
             if (orderModel == null)
             {
                 return NotFound();
