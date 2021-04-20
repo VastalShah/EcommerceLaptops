@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    var laptop = ViewData["laptop"] as LaptopModel;
 }
 
 <h1>Details</h1>
@@ -14,7 +15,7 @@
             @Html.DisplayNameFor(model => model.laptop_id)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.laptop_id)
+            @Html.DisplayFor(model => laptop.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.user_id)
