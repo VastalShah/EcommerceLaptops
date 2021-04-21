@@ -13,7 +13,7 @@ namespace Ecommerce_Laptops.Controllers
     {
         private readonly UserManager<ApplicationUser> _secutiryManager;
         private readonly SignInManager<ApplicationUser> _loginManager;
-        
+
         public AccountController(UserManager<ApplicationUser> secMgr, SignInManager<ApplicationUser> loginManager)
         {
             _secutiryManager = secMgr;
@@ -47,6 +47,15 @@ namespace Ecommerce_Laptops.Controllers
                 {
                     await _loginManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    var error = "";
+                    foreach (var item in result.Errors)
+                    {
+                        error += item.Code + ": " +item.Description + "\n";
+                    }
+                    ViewData["Errors"] = error;
                 }
             }
             return View(model);
