@@ -30,13 +30,18 @@ namespace Ecommerce_Laptops.Controllers
         {
             var userid = _userManager.GetUserId(HttpContext.User);
             List<OrderModel> orders = await _context.Orders.ToListAsync();
-            orders = orders.Where(u => u.user_id == userid).ToList();
+
+            if (!User.IsInRole("Admin"))
+            {
+                orders = orders.Where(u => u.user_id == userid).ToList();
+            }
 
             List<OrderDetailsModel> orderDetails = new List<OrderDetailsModel>();
-            foreach (var item in orders)
+
+            for (int i=0; i<orders.Count; i++)
             {
-                var laptop = _context.Laptops.FirstOrDefault(m => m.ID == item.laptop_id);
-                var user = await _userManager.GetUserAsync(User);
+                var laptop = _context.Laptops.FirstOrDefault(m => m.ID == orders[i].laptop_id);
+                var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == orders[i].user_id);
                 OrderDetailsModel orderDetail = new OrderDetailsModel
                 {
                     Product_name = laptop.Name,
@@ -47,7 +52,7 @@ namespace Ecommerce_Laptops.Controllers
                     UserEmail = user.Email,
                     UserPhoneNumber = user.PhoneNumber,
                     UserAddress = user.Address,
-                    Order_id = item.Order_ID
+                    Order_id = orders[i].Order_ID
                 };
                 orderDetails.Add(orderDetail);
             }
